@@ -1,62 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub Stats - abbasmoosajee07</title>
-  <style>
-    body {
-      background-color: #0d1117; /* GitHub dark background */
-      color: #e6edf3;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-    }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abbas Moosajee</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
 
-    h2 {
-      color: #ff6600; /* Accent orange */
-      margin-bottom: 30px;
-    }
-
-    .card-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-    }
-
-    img {
-      max-width: 90%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
-    @media (min-width: 900px) {
-      .card-container {
-        flex-direction: row; /* side by side on larger screens */
-      }
-    }
-  </style>
+  <link rel="icon" type="image/png" href="./assets/Logo_files/WO_Logo.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="./assets/Logo_files/WO_Logo.png" />
+  <link rel="shortcut icon" href="./assets/Logo_files/WO_Logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+  <link rel="manifest" href="/site.webmanifest" />
 </head>
 <body>
+  <header class="header">
+    <nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i id="themeIcon" class="bi bi-sun-fill"></i>
+      </button>
+      <a href="https://github.com/abbasmoosajee07" target="_blank">Projects</a>
+      <a> | </a>
+      <a href="./assets/abbas_cv.pdf" target="_blank">CV</a>
+    </nav>
+  </header>
 
-  <h2>📊 GitHub Stats (Dark Mode)</h2>
+  <main class="split">
 
-  <div class="card-container">
-    <img 
-      src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=abbasmoosajee07&theme=codeSTACKr" 
-      alt="Profile Details"
-    />
+    <!-- LEFT PANEL: Circular logo -->
+    <section class="feature">
 
-    <img 
-      src="https://github-readme-stats.vercel.app/api/top-langs/?username=abbasmoosajee07&layout=compact&theme=codeSTACKr" 
-      alt="Top Languages"
-    />
-  </div>
+      <div class="logo-wrap">
+        <!-- Circular Text -->
+        <svg class="ring" viewBox="0 0 200 200" width="200" height="200">
+          <defs>
+            <path id="circle" d="M100,100 m-90,0 a90,90 0 1,1 180,0 a90,90 0 1,1 -180,0" />
+          </defs>
+          <text font-size="14" letter-spacing="0.85" fill="white">
+            <textPath href="#circle" startOffset="0">
+              <tspan font-weight="700">ABBAS MOOSAJEE</tspan> • EST.2002 • STUDENT • ENGINEER • DEVELOPER • READER •
+            </textPath>
+          </text>
+
+        </svg>
+
+        <!-- Logo -->
+        <svg class="logo" viewBox="0 0 100 100" width="100" height="100">
+          <defs>
+            <clipPath id="circleClip">
+              <circle cx="50" cy="50" r="50" />
+            </clipPath>
+          </defs>
+          <!-- Default logo -->
+          <image href="./assets/Logo_files/TW_Logo.png" width="100" height="100"
+                clip-path="url(#circleClip)" class="logo-default" />
+          <!-- Hover logo -->
+          <image href="./assets/profile_pic1.jpg" width="100" height="100"
+                clip-path="url(#circleClip)" class="logo-hover" />
+        </svg>
+      </div>
+
+    </section>
+
+    <!-- RIGHT PANEL: Content -->
+    <div class="content">
+      <h1>Hi, I'm Abbas</h1>
+      <p>
+        I've been building things on the Internet since 2020, and graduated with a degree in Chemical Engineering from the University of Birmingham. I'm experienced with languages and software like 
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="text-link">JavaScript</a>, 
+        <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="text-link">Python</a>, 
+        <a href="https://www.mathworks.com/products/matlab.html" target="_blank" rel="noopener noreferrer" class="text-link">MATLAB</a>, 
+        <a href="https://www.latex-project.org/" target="_blank" rel="noopener noreferrer" class="text-link">LaTeX</a>, 
+        <a href="https://www.autodesk.com/products/autocad" target="_blank" rel="noopener noreferrer" class="text-link">AutoCAD</a>, 
+        <a href="https://www.aveva.com/en/products/proii/" target="_blank" rel="noopener noreferrer" class="text-link">AVEVA PRO/II</a>, 
+        <a href="https://www.comsol.com/" target="_blank" rel="noopener noreferrer" class="text-link">COMSOL</a>, and 
+        <a href="https://www.mathworks.com/products/simulink.html" target="_blank" rel="noopener noreferrer" class="text-link">SIMULINK</a>.
+      </p>
+      <p>
+        Aside from developing online project & problem solving, such as Turing Machines, PlasmaGasifiers and more.
+        I also enjoy competing in onling coding competitions such as Advent of Code, Project Euler, EverybodyCodes and more.
+      </p>
+      <p>
+        While you're here, feel free to check out my
+        <a href="https://github.com/abbasmoosajee07/AlgoVault" target="_blank" rel="noopener noreferrer" class="text-link">projects</a>
+        or learn about my cricket journey
+        <a href="https://youtu.be/_dtRie8XolU?si=V2fPTx-M10ztRSfV" target="_blank" rel="noopener noreferrer" class="text-link">here</a>.
+      </p>
+      <!-- Add this to your HTML (best in header or footer) -->
+      <div id="main-social-links"></div>
+    </div>
+    </section>
+  </main>
+
+  <script src="./scripts/social-config.js"></script>
+  <script src="./scripts/social-links.js"></script>
+  <script src="./scripts/main.js"></script>
 
 </body>
 </html>

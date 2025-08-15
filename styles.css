@@ -1,0 +1,351 @@
+:root {
+    --feature-color: #fd490d;
+    --text-color: #eee;
+    --muted: #aaa;
+    --bg: #111;
+}
+
+body.light {
+    --text-color: #111;
+    --muted: #666;
+    --bg: #fff;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+    font-family: system-ui, sans-serif;
+    color: var(--text-color);
+    background: var(--bg);
+    line-height: 1.55;
+    transition: background .3s ease, color .3s ease;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* left: logo, right: content */
+    grid-template-rows: 1fr 1fr 1fr; /* vertical split into 3 equal rows */
+    height: 100vh;
+}
+
+/* LEFT PANEL */
+.feature {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;  /* middle row */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: radial-gradient(1200px 1200px at 50% 50%, color-mix(in lab, var(--feature-color), #fff 0%), var(--feature-color));
+    color: #fff;
+    overflow: hidden;
+    transition: background .3s ease;
+}
+
+.feature {
+    grid-column: 1 / 2;      /* full left half */
+    grid-row: 1 / 4;         /* full height of left column */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: radial-gradient(1200px 1200px at 50% 50%, color-mix(in lab, var(--feature-color), #fff 7%), var(--feature-color));
+    color: #fff;
+    overflow: hidden;
+}
+
+.logo-wrap {
+    position: relative;
+    width: 90%;
+    height: 45.33%;          /* middle third of the left half */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-wrap svg.ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-wrap svg:not(.ring) {
+    width: 75%;
+    height: 75%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Keep hover image hidden initially */
+.logo-hover {
+    display: none;
+}
+
+/* Trigger swap when hovering anywhere inside .logo-wrap (text ring OR logo) */
+.logo-wrap:hover .logo-default {
+    display: none;
+}
+.logo-wrap:hover .logo-hover {
+    display: block;
+}
+.ring text {
+    transform-origin: 50% 50%;   /* center of the SVG */
+    animation: spin 40s linear infinite;
+}
+
+@keyframes spin {
+    from {
+    transform: rotate(0deg);
+    }
+    to {
+    transform: rotate(360deg);
+    }
+}
+
+/* Pause animation when logo is being touched/pressed */
+.logo-wrap:active .ring text {
+    animation-play-state: paused;
+}
+
+/* For devices that support hover (desktop) */
+@media (hover: hover) {
+    .logo-wrap:hover .ring text {
+    animation-play-state: paused;
+    }
+}
+
+/* RIGHT PANEL */
+.content {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4; /* full height */
+    padding: clamp(20px, 6vw, 72px);
+    display: grid;
+    align-content: center;
+    gap: clamp(18px, 2.5vw, 28px);
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: .78rem;
+    color: var(--muted);
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 56px);
+    line-height: 1.05;
+}
+
+p {
+    margin: 0;
+    font-size: clamp(16px, 1.6vw, 18px);
+    max-width: 65ch;
+}
+
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    border: none;
+    background: var(--feature-color);
+    color: #fff;
+    padding: .9rem 1.15rem;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .2s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    width: fit-content;
+}
+.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+.cta:active { transform: translateY(0); box-shadow: 0 6px 14px rgba(0,0,0,.14); }
+
+@media (max-width: 900px) {
+    .split { grid-template-columns: 1fr; grid-template-rows: auto auto; }
+    .feature { min-height: 40vh; grid-column: 1 / 2; grid-row: 1 / 2; }
+    .content { min-height: 60vh; grid-column: 1 / 2; grid-row: 2 / 3; }
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 7px;
+    left: 7px;
+    padding: 7px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 0px 0px rgba(0,0,0,0);
+    border-color: transparent;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    z-index: 1000;
+}
+
+.header a, .header button {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Updated responsive controls */
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+
+.feature {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(
+    1200px 1200px at 50% 50%,
+    color-mix(in lab, var(--feature-color), #fff 7%),
+    var(--feature-color)
+    );
+    padding: 2rem;
+}
+
+.logo-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Limits maximum size on large screens */
+    aspect-ratio: 1/1; /* Maintains perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Right panel content adjustments */
+.content {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    padding: clamp(2rem, 5vw, 4rem);
+    display: grid;
+    align-content: center;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    max-width: 900px; /* Prevents content from stretching too wide */
+    margin: 0 auto; /* Centers content in its column */
+}
+
+.text-link {
+    font-weight: 600; /* Slightly bolder */
+    text-decoration: underline; /* Underline */
+    text-decoration-thickness: 1px; /* Thin underline */
+    text-underline-offset: 0.15em; /* Space between text and underline */
+    color: inherit; /* Keeps existing text color */
+}
+
+.text-link:hover {
+    text-decoration-thickness: 2px; /* Slightly thicker on hover */
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--feature-color);
+    transform: translateY(-2px);
+}
+/* Enhanced responsive breakpoints */
+@media (max-width: 1200px) {
+    .logo-wrap {
+    max-width: 400px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .logo-wrap {
+    max-width: 350px;
+    }
+}
+
+@media (max-width: 900px) {
+    .split {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;  /* Changed from auto 1fr */
+    height: auto;
+    min-height: 100vh;  /* Ensures full viewport coverage */
+    }
+
+    .feature {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    height: 40vh;  /* Fixed height instead of min-height */
+    padding: 1rem;  /* Keep some padding */
+    }
+
+    .content {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    padding: 2rem;  /* Restore reasonable padding */
+    padding-top: 1.5rem;  /* Tighter top padding */
+    }
+
+    .logo-wrap {
+    max-width: 480px;  /* Slightly smaller */
+    width: 85%;  /* Relative width */
+    height: 85%;
+    }
+}
+
+@media (max-width: 600px) {
+    .feature {
+    height: 35vh;  /* Reduced height */
+    }
+
+    .logo-wrap {
+    max-width: 320px;  /* Smaller logo */
+    width: 85%;  /* Relative width */
+    height: 85%;
+    }
+
+    .content {
+    padding: 1.5rem;
+    padding-top: 1rem;  /* Tighter spacing */
+    gap: 1rem;  /* Reduced gap between elements */
+    }
+}
+
+@media (max-width: 400px) {
+    .feature {
+    height: 30vh;  /* Most compact */
+    }
+
+    .logo-wrap {
+    max-width: 280px;  /* Smallest logo size */
+    width: 85%;  /* Relative width */
+    height: 85%;
+    }
+
+    .content {
+    padding: 1rem;
+    gap: 0.75rem;  /* Tightest spacing */
+    }
+}
