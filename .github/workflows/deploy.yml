@@ -1,0 +1,33 @@
+name: Build and Deploy Portfolio
+
+# Only run manually
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout dev branch
+      - name: Checkout dev branch
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      # Clone the challenge_utils repo into projects folder
+      - name: Clone challenge_utils
+        run: |
+          git clone --depth 1 https://github.com/abbasmoosajee07/challenge_utils.git temp_challenge_utils
+          mkdir -p projects/challenge_utils
+          cp -r temp_challenge_utils/* projects/challenge_utils/
+          rm -rf temp_challenge_utils
+
+      # Deploy everything to main branch for GitHub Pages
+      - name: Deploy to main for GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: main
+          force_orphan: true   # keeps main clean, only built site
