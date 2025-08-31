@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abbas Moosajee - GitHub Repositories</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="icon" href="/assets/Logo_files/TO_LOGO.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/Logo_files/TO_LOGO.png">
+  <link rel="apple-touch-icon" href="/assets/Logo_files/TO_LOGO.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/page.css">
+
+</head>
+<body>
+  <script src="/common/loadHeader.js"></script>
+
+  <div class="container">
+    <h1>GitHub Repository Cards</h1>
+    
+    <div class="cards-container" id="cards-container">
+      <!-- Cards will be generated here by JavaScript -->
+    </div>
+    
+    <button class="refresh-btn" id="refresh-btn">
+      <i class="fas fa-sync-alt"></i>
+      Refresh All Data
+    </button>
+  </div>
+
+<script type="module">
+  import {injectRepoStyles, languageColors, generateCards, fetchRepoData } from '/scripts/repo_card.js';
+  // repositories to display
+  const repositories = [
+    { owner: 'abbasmoosajee07', name: 'challenge_utils', visitUrl: 'https://github.com/abbasmoosajee07/challenge_utils' },
+    { owner: 'abbasmoosajee07', name: 'AlgoVault', visitUrl: './blog.html' },
+    { owner: 'abbasmoosajee07', name: 'PlasmaGasifierDP', visitUrl: 'https://github.com/abbasmoosajee07/PlasmaGasifierDP/blob/53e98e90149b198abf030308cd6fe6715c53e442/Plasma_Gasifier_Design.pdf' },
+    { owner: 'abbasmoosajee07', name: 'TuringMachineSim', visitUrl: 'https://abbasmoosajee07.github.io/TuringMachineSim/' },
+    { owner: 'abbasmoosajee07', name: 'EverybodyCodes', visitUrl: '' }
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectRepoStyles();
+    generateCards(repositories);
+
+    // Fetch data for all repos
+    repositories.forEach((repo, index) => {
+      const cardId = `card-${index + 1}`;
+      fetchRepoData(repo.owner, repo.name, cardId);
+    });
+
+    document.getElementById('refresh-btn').addEventListener('click', () => {
+      repositories.forEach((repo, index) => {
+        const cardId = `card-${index + 1}`;
+        fetchRepoData(repo.owner, repo.name, cardId);
+      });
+    });
+  });
+</script>
+
+  <script>
+
+      // Add event listener to refresh button
+      document.getElementById('refresh-btn').addEventListener('click', function() {
+        repositories.forEach((repo, index) => {
+          const cardId = `card-${index + 1}`;
+          fetchRepoData(repo.owner, repo.name, cardId);
+        });
+      });
+  </script>
+
+
+</body>
+</html>
