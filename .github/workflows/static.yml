@@ -35,35 +35,12 @@ jobs:
       - name: Fetch GitHub repo data
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          mkdir -p data
-          # List of repos
-          repos=(
-            "abbasmoosajee07/challenge_utils"
-            "abbasmoosajee07/AlgoVault"
-            "abbasmoosajee07/PlasmaGasifierDP"
-            "abbasmoosajee07/TuringMachineSim"
-            "abbasmoosajee07/EverybodyCodes"
-          )
-          
-          for repo in "${repos[@]}"; do
-            owner=$(echo $repo | cut -d/ -f1)
-            name=$(echo $repo | cut -d/ -f2)
-            filename="data/${owner}_${name}.json"
-            echo "Fetching $repo -> $filename"
-            if [ -n "$GH_TOKEN" ]; then
-              curl -H "Authorization: token $GH_TOKEN" \
-                   https://api.github.com/repos/$repo \
-                   > $filename
-            else
-              curl https://api.github.com/repos/$repo \
-                   > $filename
-            fi
-          done
+        run: node scripts/fetch-repo.js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # 👇 This must point to the folder that contains index.html
           path: '.'
 
       - name: Deploy to GitHub Pages
