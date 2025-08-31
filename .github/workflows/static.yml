@@ -37,11 +37,17 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: node scripts/fetch-repo.js
 
+      - name: Debug: list repo contents
+        run: |
+          echo "📂 Listing files:"
+          ls -al .
+          echo "---"
+          ls -al ./data || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # 👇 This must point to the folder that contains index.html
-          path: '.'
+          path: '.'   # 👈 repo root must contain index.html
 
       - name: Deploy to GitHub Pages
         id: deployment
