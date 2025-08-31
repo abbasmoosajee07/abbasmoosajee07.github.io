@@ -22,11 +22,6 @@
     <div class="cards-container" id="cards-container">
       <!-- Cards will be generated here by JavaScript -->
     </div>
-    
-    <button class="refresh-btn" id="refresh-btn">
-      <i class="fas fa-sync-alt"></i>
-      Refresh All Data
-    </button>
   </div>
 
 <script type="module">
@@ -58,17 +53,6 @@
     });
   });
 </script>
-
-  <script>
-
-      // Add event listener to refresh button
-      document.getElementById('refresh-btn').addEventListener('click', function() {
-        repositories.forEach((repo, index) => {
-          const cardId = `card-${index + 1}`;
-          fetchRepoData(repo.owner, repo.name, cardId);
-        });
-      });
-  </script>
 
 
 </body>
