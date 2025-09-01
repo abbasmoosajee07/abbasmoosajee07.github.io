@@ -17,8 +17,14 @@
   <script src="/common/loadHeader.js"></script>
 
   <div class="container">
-    <h1>GitHub Repository Cards</h1>
-    
+    <h1>Projects</h1>
+      <a href="https://projecteuler.net/progress=abbasmoosajee07" target="_blank">
+        <img src="https://projecteuler.net/profile/abbasmoosajee07.png"
+            alt="Abbas Moosajee Project Euler profile"/>
+      </a>
+      <a href="https://www.codeabbey.com/index/user_profile/abbas-moosajee">
+        <img src="https://www.codeabbey.com/index/user_banner/abbas-moosajee" alt="Your Name at CodeAbbey"/>
+      </a>
     <div class="cards-container" id="cards-container">
       <!-- Cards will be generated here by JavaScript -->
     </div>
@@ -28,11 +34,13 @@
   import {injectRepoStyles, languageColors, generateCards, fetchRepoData } from '/scripts/repo_card.js';
   // repositories to display
   const repositories = [
-    { owner: 'abbasmoosajee07', name: 'challenge_utils', visitUrl: 'https://github.com/abbasmoosajee07/challenge_utils' },
-    { owner: 'abbasmoosajee07', name: 'AlgoVault', visitUrl: './blog.html' },
-    { owner: 'abbasmoosajee07', name: 'PlasmaGasifierDP', visitUrl: 'https://github.com/abbasmoosajee07/PlasmaGasifierDP/blob/53e98e90149b198abf030308cd6fe6715c53e442/Plasma_Gasifier_Design.pdf' },
     { owner: 'abbasmoosajee07', name: 'TuringMachineSim', visitUrl: 'https://abbasmoosajee07.github.io/TuringMachineSim/' },
-    { owner: 'abbasmoosajee07', name: 'EverybodyCodes', visitUrl: '' }
+    { owner: 'abbasmoosajee07', name: 'AlgoVault', visitUrl: 'https://github.com/abbasmoosajee07/AlgoVault/blob/main/README.md' },
+    { owner: "abbasmoosajee07", name: "cryptopals", visitUrl: '' },
+    { owner: 'abbasmoosajee07', name: 'PlasmaGasifierDP', visitUrl: 'https://github.com/abbasmoosajee07/PlasmaGasifierDP/blob/53e98e90149b198abf030308cd6fe6715c53e442/Plasma_Gasifier_Design.pdf' },
+    { owner: "abbasmoosajee07", name: "AdventofCode", visitUrl: '' },
+    { owner: 'abbasmoosajee07', name: 'EverybodyCodes', visitUrl: '' },
+    { owner: 'abbasmoosajee07', name: 'challenge_utils', visitUrl: '' },
   ];
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -45,12 +53,6 @@
       fetchRepoData(repo.owner, repo.name, cardId);
     });
 
-    document.getElementById('refresh-btn').addEventListener('click', () => {
-      repositories.forEach((repo, index) => {
-        const cardId = `card-${index + 1}`;
-        fetchRepoData(repo.owner, repo.name, cardId);
-      });
-    });
   });
 </script>
 

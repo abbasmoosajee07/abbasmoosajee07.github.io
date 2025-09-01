@@ -13,6 +13,8 @@ const repos = [
   { owner: "abbasmoosajee07", name: "AlgoVault" },
   { owner: "abbasmoosajee07", name: "PlasmaGasifierDP" },
   { owner: "abbasmoosajee07", name: "TuringMachineSim" },
+  { owner: "abbasmoosajee07", name: "AdventofCode" },
+  { owner: "abbasmoosajee07", name: "cryptopals" },
   { owner: "abbasmoosajee07", name: "EverybodyCodes" }
 ];
 

@@ -56,7 +56,7 @@ export function generateCards(repositories) {
           </div>
           <div class="card-footer">
             <div class="footer-left">
-              ${hasVisitUrl ? `<a href="${repo.visitUrl}" target="_blank" class="btn visit-btn"><i class="fas fa-external-link-alt"></i>Visit Project</a>` : ''}
+              ${hasVisitUrl ? `<a href="${repo.visitUrl}" target="_blank" class="btn visit-btn"><i class="fas fa-external-link-alt"></i>Visit</a>` : ''}
               <div class="last-updated">
                 <i class="fas fa-clock"></i>
                 Updated: <span class="updated">Loading...</span>
@@ -148,7 +148,7 @@ export function injectRepoStyles() {
     }
 
     .github-icon { font-size: 20px; margin-right: 10px; }
-    .card-title { font-size: 16px; font-weight: 600; }
+    .card-title { font-size: 14px; font-weight: 600; }
     .card-body { padding: 20px; }
     .repo-name { font-size: 18px; font-weight: 700; color: #0366d6; margin-bottom: 5px; display: flex; justify-content: center; align-items: center; }
     .repo-name i { margin-right: 8px; color: #586069; font-size: 16px; }
