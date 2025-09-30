@@ -15,7 +15,8 @@ const repos = [
   { owner: "abbasmoosajee07", name: "TuringMachineSim" },
   { owner: "abbasmoosajee07", name: "AdventofCode" },
   { owner: "abbasmoosajee07", name: "cryptopals" },
-  { owner: "abbasmoosajee07", name: "EverybodyCodes" }
+  { owner: "abbasmoosajee07", name: "EverybodyCodes" },
+  { owner: "abbasmoosajee07", name: "cellular-automata" }
 ];
 
 const GITHUB_TOKEN = process.env.GH_TOKEN; // put in .env.local, never commit
