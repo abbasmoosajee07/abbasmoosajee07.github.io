@@ -79,8 +79,8 @@ body {
 
 .logo-wrap {
     position: relative;
-    width: 90%;
-    height: 45.33%;          /* middle third of the left half */
+    width: 100%;
+    height: 50%;          /* middle third of the left half */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,8 +93,8 @@ body {
 }
 
 .logo-wrap svg:not(.ring) {
-    width: 75%;
-    height: 75%;
+    width: 80%;
+    height: 80%;
     position: relative;
     z-index: 1;
 }
@@ -112,8 +112,9 @@ body {
     display: block;
 }
 .ring text {
-    transform-origin: 50% 50%;   /* center of the SVG */
-    animation: spin 40s linear infinite;
+    transform-origin: 50% 50%;
+    /*centeroftheSVG*/animation: spin 40s linear infinite;
+    -webkit-animation: spin 40s linear infinite;
 }
 
 @keyframes spin {
